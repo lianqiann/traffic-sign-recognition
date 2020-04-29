@@ -105,6 +105,8 @@ venv.bak/
 
 # dataset
 data/
+outputs/
+examples/
 
 # vscode
 .vscode/
