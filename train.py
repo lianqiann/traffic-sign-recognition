@@ -19,13 +19,13 @@ def loss_batch(model, loss_func, x, y, opt=None):
     return loss.item(), len(x)
 
 
-def valid_batch(model, loss_func, x, y):
+def valid_batch(model, x, y):
     output = model(x)
-    loss = loss_func(output, y)
+    
     pred = torch.argmax(output, dim=1)
     correct = pred == y.view(*pred.shape)
 
-    return loss.item(), torch.sum(correct).item(), len(x)
+    return torch.sum(correct).item(), len(x)
 
 
 def fit(epochs, model, loss_func, opt, train_dl, valid_dl, patience, checkpoint):

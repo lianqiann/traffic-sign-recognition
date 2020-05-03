@@ -135,12 +135,12 @@ def get_train_loaders(path, device, batch_size, workers, class_count):
     return train_loader, valid_loader
 
 
-def get_test_loader(path, device, gray=True):
+def get_test_loader(path, device):
     def preprocess(x, y):
         return x.to(device), y.to(device, dtype=torch.int64)
 
     test_dataset = PickledDataset(
-        path+'/test_gray.p', transform=get_test_transforms())
+        path, transform=get_test_transforms())
     test_loader = WrappedDataLoader(DataLoader(
         test_dataset, batch_size=64, shuffle=False), preprocess)
 
