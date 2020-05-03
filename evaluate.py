@@ -10,16 +10,15 @@ from train import valid_batch
 from tqdm import tqdm
 
 
-def evaluate(model, loss_func, dl):
+def evaluate(model,dl):
     model.eval()
     with torch.no_grad():
-        losses, corrects, nums = zip(
-            *[valid_batch(model, loss_func, x, y) for x, y in tqdm(dl)])
-        test_loss = np.sum(np.multiply(losses, nums)) / np.sum(nums)
+        corrects, nums = zip(
+            *[valid_batch(model, x, y) for x, y in tqdm(dl)])
+        #test_loss = np.sum(np.multiply(losses, nums)) / np.sum(nums)
         test_accuracy = np.sum(corrects) / np.sum(nums) * 100
 
-        print(f"Test loss: {test_loss:.6f}\t"
-              f"Test accruacy: {test_accuracy:.3f}%")
+        print(f"Test accruacy: {test_accuracy:.3f}%")
 
 
 def convert_image_np(img):
