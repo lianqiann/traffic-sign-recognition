@@ -22,6 +22,6 @@ Run the script fooler_generator.py to generate adversarial examples
   python fooler_generator.py --help
   ```
   
- The training process is shown in model_training.ipnyb. The attacking evaluation is displayed in the advattack.ipnyb.
+ The training process is shown in `model_training.ipynb`. The attacking evaluation is displayed in the `advattack.ipynb`.
   
   
